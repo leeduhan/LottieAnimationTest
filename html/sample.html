@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .lottie {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie1" class="lottie"></div>
+    <br>
+    <div id="lottie2" class="lottie"></div>
+    <br>
+    <div id="lottie3" class="lottie" style="position: relative;"></div>
+    <!-- <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script>' -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.10/lottie.js" type="text/javascript"></script>
+    <script>
+        (function () {
+            var animation = bodymovin.loadAnimation({
+                container: document.getElementById('lottie1'), // Required
+                path: '24437-scroll-down.json', // Required
+                renderer: 'svg', // Required svg/canvas/html
+                loop: true, // Optional
+                autoplay: true, // Optional
+                name: "Hello World", // Name for future reference. Optional.
+            })
+           bodymovin.loadAnimation({
+                container: document.getElementById('lottie2'), // Required
+                path: '24635-rotating-balls.json', // Required
+                renderer: 'canvas', // Required svg/canvas/html
+                loop: true, // Optional
+                autoplay: true, // Optional
+                name: "Hello World", // Name for future reference. Optional.
+            })
+            bodymovin.loadAnimation({
+                container: document.getElementById('lottie3'), // Required
+                path: '24796-404-page.json', // Required
+                renderer: 'html', // Required svg/canvas/html
+                loop: true, // Optional
+                autoplay: true, // Optional
+                name: "Hello World", // Name for future reference. Optional.
+            })
+        })()
+    </script>
+</body>
+</html>

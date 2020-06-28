@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .lottie {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie1" class="lottie"></div>
+    <div id="btn-list">
+        <!-- <button id="play">play</button>
+        <button id="stop">stop</button>
+        <button id="pause">pause</button> -->
+    </div>
+    <!-- <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script>' -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.10/lottie.js" type="text/javascript"></script>
+    <script>
+        (function () {
+            const lottie = bodymovin.loadAnimation({
+                container: document.getElementById('lottie1'), // Required
+                path: '24796-404-page.json', // Required
+                renderer: 'html', // Required svg/canvas/html
+                loop: false, // Optional
+                autoplay: false, // Optional
+                name: "Hello World", // Name for future reference. Optional.
+            });
+
+            console.log(lottie);
+            // lottie.play();
+            // lottie.stop()
+            // lottie.pause()
+            // lottie.setSpeed(speed) //  -- one param speed (1 is normal speed)
+            // lottie.goToAndStop(value, isFrame) // first param is a numeric value. second param is a boolean that defines time or frames for first param
+            // lottie.goToAndPlay(value, isFrame) // first param is a numeric value. second param is a boolean that defines time or frames for first param
+            // lottie.setDirection(direction) //  -- one param direction (1 is normal direction.)
+            // lottie.playSegments(segments, forceFlag) 
+            //  -- first param is a single array or multiple arrays of two values each(fromFrame,toFrame), second param is a boolean for forcing the new segment right awa
+            // Play initial segment
+            // Should be a proper range, e.g. [0, 1] or [24, 25]
+            // [0, 0] or [24, 24] won't work
+            // lottie.setSubframe(flag) //  -- If false, it will respect the original AE fps. If true, it will update as much as possible. (true by default
+            // lottie.destroy()
+
+            const fnObject = {
+                play : [],
+                stop : [],
+                pause : [],
+                // setLocationHref : [],
+                setSpeed : [3],
+                goToAndStop : [5, true],
+                goToAndPlay : [5, true],
+                setDirection : [10],
+                playSegments : [[24, 25], true],
+                setSubframe : [],
+                destroy : []
+            }
+
+            // document.getElementById('play').onclick = e => {
+            //     console.log('paly');
+            //     lottie.play();
+            // };
+
+            document.getElementById('btn-list').innerHTML = Object.keys(fnObject).map(fnName => `<button id="${fnName}">${fnName}</button>`).join('')
+
+            Object.keys(fnObject).map(fnName => {
+                document.getElementById(fnName).onclick = e => {
+                    console.log(fnName, lottie.hasOwnProperty(fnName), (fnName in lottie), fnObject[fnName]);
+                    lottie[fnName].apply(lottie, fnObject[fnName])
+                };
+            })
+
+            console.log(bodymovin, Object.getOwnPropertyNames(bodymovin), Object.keys(fnObject))
+            // bodymovin.play() // -- with 1 optional parameter name to target a specific animation
+            // bodymovin.stop() // -- with 1 optional parameter name to target a specific animation
+            // bodymovin.setSpeed() // -- first param speed (1 is normal speed) -- with 1 optional parameter name to target a specific animation
+            // bodymovin.setDirection() // -- first param direction (1 is normal direction.) -- with 1 optional parameter name to target a specific animation
+            // bodymovin.setLocationHref(locationHref) //  -- one param usually pass as location.href. Its useful when you experience mask issue in safari where your url does not have # symbol.
+            // bodymovin.searchAnimations() // -- looks for elements with class "lottie"
+            // bodymovin.loadAnimation() // -- Explained above. returns an animation instance to control individually.
+            // bodymovin.destroy() // -- To destroy and release resources. The DOM element will be emptied.
+            // bodymovin.registerAnimation() // -- you can register an element directly with registerAnimation. It must have the "data-animation-path" attribute pointing at the data.json url
+            // bodymovin.setQuality() // -- default 'high', set 'high','medium','low', or a number > 1 to improve player performance. In some animations as low as 2 won't show any difference.
+        })()
+    </script>
+</body>
+</html>
